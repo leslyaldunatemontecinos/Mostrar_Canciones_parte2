@@ -35,4 +35,9 @@ public class ServicioCanciones {
 		return repositorioCanciones.save(nuevaCancion);
 	}
 	
+	// PARTE 3
+	public Cancion actualizaCancion(Cancion cancion) {
+		return repositorioCanciones.save(cancion);
+	}
+	
 }

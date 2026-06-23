@@ -42,12 +42,12 @@ public class ControladorCanciones {
 		model.addAttribute("cancion", cancion);
 		return "detalleCancion";
 	}
-	// PARTE 2
+	// PARTE 2 Mostrar formulario para agregar
 	@GetMapping("/canciones/formulario/agregar/{idCancion}")
 	public String formularioAgregarCancion(@ModelAttribute("cancion") Cancion cancion) {
 					return "agregarCancion";
 		}
-	// Procesar el formulario (Correcion de ortografia en result y cierres)
+	// Procesar el formulario 
 	@PostMapping("/canciones/procesa/agregar")
 	public String procesarAgregarCancion(@Valid @ModelAttribute("cancion") Cancion cancion, BindingResult result) {
 		
@@ -60,5 +60,42 @@ public class ControladorCanciones {
 		servicioCanciones.agregarCancion(cancion);
 		return "redirect:/canciones";
 		}
+	
+	//PARTE 3 Actualizar cancion
+	// 1. Formulario para editar:Carga la cancion existente para su ID y la envia a la vista
+	@GetMapping("/canciones/formulario/editar/{idCancion}")
+	public String formularioEditarCancion(@PathVariable("idCancion") Long idCancion, Model model) {
+		// buscamos la cancion usando el metodo que tenemos implementado
+		Cancion cancionExistente = servicioCanciones.obtenerCancionPorId(idCancion);
+		if (cancionExistente == null) {
+			return "redirect:/canciones";
+		}
+		
+		// Pasamos la cancion al modelo para que el formulario JSP se precargue automaticamente
+		model.addAttribute("cancion", cancionExistente);
+		return "editarCancion";
+		}
+	
+	//2. Procesar la edicion: Recibe el objeto con las modificaciones y valida los datos
+	@PostMapping("/canciones/procesa/editar/{idCancion}")
+	public String procesarEditarCancion(
+			@Valid @ModelAttribute("cancion") Cancion cancion,
+			BindingResult result,
+			@PathVariable("idCancion") Long idCancion) {
+		
+		if(result.hasErrors()) {
+			//Si falta alguna validacion,regresa al formulario manteniendo los errores en pantalla
+			return "editarCancion";
+			}
+			//Mantenemos el ID de la ruta en el objeto para que JPA ejecute un UPDATE 
+			cancion.setId(idCancion);
+			
+			//Invocamos el metodo de servicio
+			servicioCanciones.actualizaCancion(cancion);
+			
+			return "redirect:/canciones";
+		}
 	}
+
+
 

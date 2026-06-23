@@ -24,5 +24,11 @@
 	
 	<br>
 	<a href="/canciones">Volver a lista de canciones</a>
-	</body>
+	
+	<%-- PARTE 3: Boton para actualizar --%>
+	<br><br>
+	<a href="/canciones/formulario/editar/${cancion.id}">
+		<button type="button">Actualizar Cancion</button>
+	</a>
+</body>
 	</html>
