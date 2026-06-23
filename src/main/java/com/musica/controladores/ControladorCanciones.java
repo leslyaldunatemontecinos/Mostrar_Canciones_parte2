@@ -95,7 +95,13 @@ public class ControladorCanciones {
 			
 			return "redirect:/canciones";
 		}
+	
+	//PARTE 4 Eliminar cancion
+	@GetMapping("/canciones/eliminar/{idCancion}")
+	public String procesarEliminarCancion(@PathVariable("idCancion") Long idCancion) {
+	servicioCanciones.eliminaCancion(idCancion);
+	return "redirect:/canciones";
 	}
-
+}
 
 

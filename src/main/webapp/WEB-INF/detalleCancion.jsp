@@ -28,7 +28,17 @@
 	<%-- PARTE 3: Boton para actualizar --%>
 	<br><br>
 	<a href="/canciones/formulario/editar/${cancion.id}">
-		<button type="button">Actualizar Cancion</button>
+		<button type="button">Actualizar Canción</button>
 	</a>
+
+	
+	<%-- Espacio entre botones --%>
+		<span style="margin-right:10px;"></span>
+		
+	<%-- PARTE 4 : Boton para eliminar --%>
+	<a href="/canciones/eliminar/${cancion.id}" onclick="return confirm('¿Estas seguro que deseas eliminar esta canción?')">
+		<button type="button">Eliminar Canción</button>
+	</a>
+	
 </body>
 	</html>
