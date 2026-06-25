@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html>
@@ -34,9 +35,16 @@
 		<form:errors path="titulo" cssClass="error-mensaje" />
 	</div>
 	
+	
+	<%-- PARTE 5 MODIFICADO--%>
 	<div class="campo-formulario">
 			<form:label path="artista">Artista:</form:label>
-			<form:input path="artista"/>
+			<form:select path="artista">
+				<form:option value="" label="-- Selecciona un Artista --"/>
+				<c:forEach items="${listaArtistas}" var="art">	
+					<form:option value="${art.id}" label="${art.nombre}${art.apellido}"/>
+			</c:forEach>
+			</form:select>
 			<form:errors path="artista" cssClass="error-mensaje" />
 		</div>
 		

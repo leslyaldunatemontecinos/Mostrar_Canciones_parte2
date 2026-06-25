@@ -6,9 +6,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import jakarta.persistence.Table;
@@ -28,9 +31,10 @@ public class Cancion {
 	private String titulo;
 	
 	
-	// Artista al menos 3 caracteres de longitud
-	@Size(min = 3, message ="El artista debe tener al menos 3 caracteres de longitud.")
-	private String artista;
+	// Artista al menos 3 caracteres de longitud PARTE 5 correcciones
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn (name="artista_id") // CREA LA LLAVE FORANEA EN LA TABLA CANCIONES
+	private Artista artista;
 	
 	// Album al menos 3 caracteres de longitud
 	@Size(min = 3, message ="El album debe tener al menos 3 caracteres de longitud.")
@@ -69,11 +73,14 @@ public class Cancion {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
-	public String getArtista() {
+
+	public Artista getArtista() {
 		return artista;
 	}
-	public void setArtista(String artista) {
+	
+	public void setArtista(Artista artista) {
 		this.artista = artista;
+
 	}
 	public String getAlbum() {
 		return album;

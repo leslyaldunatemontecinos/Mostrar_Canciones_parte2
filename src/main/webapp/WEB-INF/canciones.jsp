@@ -8,7 +8,7 @@
    <meta charset="UTF-8">
    <title>Lista de Canciones</title>
 </head>
-<tbody>
+<body>
    <h1>Lista de canciones</h1>
    <table border="1" cellpadding="5" cellspacing="0">
 	<thead>
@@ -18,21 +18,25 @@
 			<th>Detalle</th>
 		</tr>
 	</thead>
+	</body>
 		<c:forEach var="cancion" items="${listaCanciones}">
 			<tr>
 				<td><c:out value="${cancion.titulo}"/></td>
-				<td><c:out value="${cancion.artista}"/></td>
+				<td><c:out value="${cancion.artista.nombre}"/></td>
 				<td>
 					<a href="/canciones/detalle/${cancion.id}">Detalle</a>
 				</td>
 			</tr>
 		</c:forEach>
-	</tbody>
+	</body>
 </table>
 		<%-- Parte 2 --%>
 	<br>
-		<a href="/canciones/formulario/agregar/0">
+		<a href="/canciones/formulario/agregar">
 			<button> Agregar una Canción</button>
 		</a>
+		<%-- Parte 5 --%>
+	<br><br>
+	<a href="/artistas">Ir a artistas</a>	
 	</body>
    </html>

@@ -22,7 +22,10 @@
 	  
 	  <div>
 	  	<form:label path="artista">Artista:</form:label>
-	  	<form:input path="artista" />
+	  	<form:select path="artista.id">
+			<form:option value="" label="-- Selecciona un Artista --"/>
+			<form:options items="${listaArtistas}" itemValue="id" itemLabel="nombre"/>
+	  	</form:select>
 	  	<form:errors path="artista" cssStyle="color:red;" />
 	    </div>
 		

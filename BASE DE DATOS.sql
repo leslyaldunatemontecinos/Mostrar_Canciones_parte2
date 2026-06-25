@@ -17,5 +17,12 @@ VALUES ('Bohemian Rhapsody', 'Queen', 'A Night at the Opera', 'Rock', 'Ingles', 
 	   ('Imagine', 'John Lennon', 'Imagine', 'Pop', 'Ingles', NOW()),
        ('Hotel California', 'Eagles', 'Hotel California', 'Rock', 'Ingles', NOW());
 
+USE canciones_db;
+SELECT * FROM artistas;
+INSERT INTO artistas (nombre,apellido,biografia, created_at, updated_at)
+VALUES 	('Jon', 'Bon Jovi', 'Leyenda del Rock', NOW(), NOW()),
+		('Michael', 'Jackson', 'El Rey del Pop', NOW(), NOW()),
+        ('Madonna', 'Ciccone', 'La Reina del Pop', NOW(), NOW()),
+        ('Shakira', 'Mebarak', 'Icono del pop latino', NOW(), NOW());
 
     
