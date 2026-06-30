@@ -24,5 +24,7 @@ VALUES 	('Jon', 'Bon Jovi', 'Leyenda del Rock', NOW(), NOW()),
 		('Michael', 'Jackson', 'El Rey del Pop', NOW(), NOW()),
         ('Madonna', 'Ciccone', 'La Reina del Pop', NOW(), NOW()),
         ('Shakira', 'Mebarak', 'Icono del pop latino', NOW(), NOW());
+        
+        SELECT * FROM artistas ORDER BY id DESC;
 
     
